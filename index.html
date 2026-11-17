@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#162638">
+  <meta name="description" content="The Tao of LoRaWAN — an engineering question becomes an ecosystem, products enable participation, and communities create shared infrastructure.">
+  <title>The Tao of LoRaWAN</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23162638'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%23af915f' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23fce1b6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./src/styles.css?v=23">
+  <script type="importmap">
+    { "imports": { "three": "./assets/vendor/three.module.min.js" } }
+  </script>
+</head>
+<body>
+  <canvas id="ambient" aria-hidden="true"></canvas>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <header class="deck-header">
+    <button class="wordmark" data-action="first" aria-label="Go to opening slide">TAO<span> / </span>LORAWAN</button>
+    <div class="header-actions">
+      <span id="slide-kicker" class="slide-kicker">THE TAO OF CONNECTION</span>
+      <button class="text-button" data-action="notes" aria-label="Open speaker notes">Notes <kbd>N</kbd></button>
+      <a class="text-button notes-page-link" href="./notes.html" target="_blank" rel="noopener noreferrer" aria-label="Open all presenter notes in a new window">All notes <span aria-hidden="true">↗</span></a>
+      <button class="text-button" data-action="overview" aria-label="Open slide overview">Index <kbd>O</kbd></button>
+    </div>
+  </header>
+
+  <main id="deck" class="deck" aria-live="off">
+    <section class="slide slide--dark slide--cover" data-theme="dark" data-title="The Tao of LoRaWAN" data-kicker="ACT I · THE QUESTION · 0:30" aria-hidden="false">
+      <div class="slide-inner cover-layout">
+        <div class="cover-orbit" aria-hidden="true"><span></span><i></i></div>
+        <div class="cover-copy reveal">
+          <p class="eyebrow">A masterclass in connection</p>
+          <h1>The Tao<br>of <em>LoRaWAN</em></h1>
+          <p class="cover-subtitle">How an idea becomes a network.<br>How a network becomes a community.</p>
+        </div>
+        <div class="cover-footer reveal"><span>RAKwireless monthly session</span><span class="gold">30 minutes · five acts · one live network</span></div>
+        <p class="interaction-hint">Move your pointer. Make a ripple.</p>
+      </div>
+      <template class="speaker-notes">Open with the question behind the title: how does a piece of technology become something people organise around, contribute to and build upon?
+
+This is not a protocol deep dive. LoRaWAN is our lens: a real example of an invention becoming an ecosystem, and of products enabling communities to create infrastructure. We will finish by sending a real message through a community mesh.
+
+Transition: First, a little context about the person telling this story.</template>
+    </section>
+
+    <section class="slide slide--light slide--work" data-theme="light" data-title="The route that brought me here" data-kicker="ACT I · THE QUESTION · 1:30" aria-hidden="true">
+      <div class="slide-inner work-layout">
+        <div class="work-heading reveal">
+          <p class="eyebrow">A career spent making technology useful.</p>
+          <h2>José<br><em>Marcelino</em></h2>
+        </div>
+        <div class="work-list reveal">
+          <article><span class="work-number">01</span><h3>Macau</h3><p>Databases, early internet and banks of dial-up modems</p></article>
+          <article><span class="work-number">02</span><h3>Pycom</h3><p>Connected hardware, MicroPython and rapid prototyping</p></article>
+          <article><span class="work-number">03</span><h3>RAKwireless</h3><p>LoRaWAN, customer deployments and Helium</p></article>
+          <article><span class="work-number">04</span><h3>Today</h3><p>Maneki Net in Portugal; transaction infrastructure at Notabene</p></article>
+        </div>
+        <p class="work-mantra">Computers since age six · First visit to China in 1988 · IoT since 2013</p>
+        <p class="small-note bio-footnote"><strong>A useful footnote:</strong> firmware I maintain still runs on approximately 30,000 active RAK hotspots.</p>
+      </div>
+      <template class="speaker-notes">Keep this personal, warm and quick. I started tinkering with computers when I was six. My first job was as a database administrator in Macau, including work with MacauNET, an early independent internet provider. I was managing banks of dial-up modems before most people thought of the internet as something that would be everywhere.
+
+I first visited China in 1988 and have returned almost every year. It has been fascinating to see the scale of change over that time. That is a small personal detail, but it gives the audience a sense of the length of the journey.
+
+Since then I have moved between my own companies and other organisations, from tiny startups to much larger engineering environments. I got interested in IoT through Bluetooth LE in 2013. In 2017 I was looking for longer-range connectivity, met Ken, and found my way into LoRa and RAK.
+
+Pycom was another formative experience. Its connected hardware and MicroPython approach made it possible for entrepreneurs to prototype quickly. I met people who loved the products because they could test an idea without first building an entire engineering department. Pycom was also a reminder that great developer experience and clever technology do not automatically create a sustainable business. Product focus, customer value and commercial discipline still matter.
+
+At RAK I worked across LoRaWAN and the Helium project. I still maintain firmware used by a substantial installed base of RAK hotspots — approximately 30,000 active units by my current estimate. Today I run Maneki Net in Portugal, providing RAK hardware locally, and work with Notabene on infrastructure that helps financial institutions and digital-asset businesses exchange the required information when crypto assets move between institutions. Notabene has publicly announced relationships with firms including Luno and Crypto.com, and a partnership with Copper. Those are examples from public announcements, not a statement that I personally support those accounts or that every relationship is current. Different domains, but a recurring theme: making complex systems usable by other people.
+
+My own LoRa story also began with a timely coincidence: meeting Ken while looking for a longer-range solution. We cannot schedule useful coincidences, but we can put ourselves in places where they are more likely — events, customer conversations, open projects and communities.
+
+Transition: That is a good way to approach the beginning of LoRa, too. Not as a grand plan, but as a question that found the right people and the right moment.</template>
+    </section>
+
+    <section class="slide slide--dark slide--payoff" data-theme="dark" data-ambient="ripples" data-title="Farther, not faster" data-kicker="ACT I · THE QUESTION · 1:45" aria-hidden="true">
+      <div class="slide-inner payoff-layout reveal">
+        <p class="eyebrow">2007–2008 · An engineering question</p>
+        <h2>Farther.<br><em>Not faster.</em></h2>
+        <div class="payoff-bottom">
+          <p>While much of wireless innovation chased higher data rates, two engineers explored a different problem:<span class="payoff-meta">Long range · Low power · A different trade-off</span></p>
+          <strong>How do you communicate much farther, using very little power?</strong>
+        </div>
+        <p class="work-mantra">A different question creates a different design space.</p>
+      </div>
+      <template class="speaker-notes">In the interview, Olivier Seller dates his discussions with Nicolas Sornin to around 2007 or 2008. The wider wireless industry was focused on higher data rates and faster connections across technologies such as 4G, Wi-Fi and Bluetooth. Their curiosity went in the other direction. They wanted to solve long-range communication.
+
+They explored chirp modulation as a way to achieve that range with a relatively simple receiver. The important point for this audience is not the mathematics of chirp spread spectrum. It is the choice of problem. They were not trying to make an existing wireless link a little faster. They were exploring a different trade-off: reach and low power rather than throughput.
+
+This is a useful innovation lesson: the answer is sometimes not to compete harder on the industry&#x27;s current scoreboard. It is to question whether the scoreboard measures the thing that matters for the problem you want to solve.
+
+Interview anchor: approximately 04:00–05:00.
+
+Transition: Even the inventors did not begin with the market we now associate with LoRa.</template>
+    </section>
+
+    <section class="slide slide--light slide--work slide--discovery" data-theme="light" data-title="The first idea was not the final market" data-kicker="ACT I · THE QUESTION · 1:30" aria-hidden="true">
+      <div class="slide-inner work-layout">
+        <div class="work-heading reveal">
+          <p class="eyebrow">Discovery before certainty</p>
+          <h2>The first idea was not<br><em>the final market.</em></h2>
+        </div>
+        <div class="work-list reveal">
+          <article><span class="work-number">01</span><h3>Long-range walkie-talkies?</h3></article>
+          <article><span class="work-number">02</span><h3>Remote controls for model aircraft?</h3></article>
+          <article><span class="work-number">03</span><h3>Then came demonstrations to metering companies.</h3><p><strong>At first: scepticism.</strong><br><strong>After the demonstration: belief.</strong></p></article>
+        </div>
+        <p class="work-mantra">Show what it can do.<br>Discover what it is for.</p>
+      </div>
+      <template class="speaker-notes">Olivier is quite clear in the interview: they did not start with a complete vision of today&#x27;s IoT market. They discussed long-range walkie-talkies and remote controls for model aircraft. The model-aircraft idea came partly from their own experience of flying planes and occasionally losing them.
+
+They then demonstrated the technology to metering companies, including point-to-point and drive-by metering scenarios. The initial reaction was sceptical. When people saw the technology working, the conversation changed. Olivier describes the first demonstration as convincing the metering people that the technology was real.
+
+That is the moment worth emphasising. The demonstration did not just validate a technical specification. It helped reveal a market that the inventors had not fully anticipated.
+
+A prototype is not only a smaller version of a finished product. It is a way to learn what matters to somebody else. The first use case may be wrong, incomplete or simply too narrow. Real users help discover the actual product.
+
+Interview anchor: approximately 12:30–13:50.
+
+Transition: A clever radio and a convincing demonstration still do not make a global network. That takes an ecosystem.</template>
+    </section>
+
+    <section class="slide slide--light" data-theme="light" data-title="A radio is not an ecosystem" data-kicker="ACT II · THE ECOSYSTEM · 2:15" aria-hidden="true">
+      <div class="slide-inner networks-layout">
+        <div class="networks-heading reveal"><p class="eyebrow">Cycleo · Semtech acquisition in 2012</p><h2>A working radio<br><em>was only the beginning.</em></h2></div>
+        <div class="network-list reveal">
+          <article><span class="network-number">01</span><h3>Devices</h3><p>Sensors and modules people could actually put into products</p></article>
+          <article><span class="network-number">02</span><h3>Gateways</h3><p>Affordable infrastructure for different sites and deployment scales</p></article>
+          <article><span class="network-number">03</span><h3>Network software</h3><p>A way to receive messages and deliver them to applications</p></article>
+          <article><span class="network-number">04</span><h3>Applications</h3><p>A connection between a measurement and a decision somebody cares about</p></article>
+          <article><span class="network-number">05</span><h3>An ecosystem</h3><p>Partners able to build businesses and support real deployments</p></article>
+        </div>
+        <p class="networks-question">The adoption test: can every part of the chain succeed?</p>
+      </div>
+      <template class="speaker-notes">Cycleo had demonstrated an impressive point-to-point radio technology. Semtech acquired Cycleo in 2012 and invested in it. But the important change was the realisation that the range could support networks, not just individual links — and that building networks required many more participants.
+
+Olivier lists the kinds of partners they needed: gateway manufacturers, device manufacturers, IT and software people, network operators and public operators. They needed an ecosystem to adopt the technology and bring it to market.
+
+Make this concrete rather than reading the table. A sensor company should be able to concentrate on the measurement, not invent the radio. A gateway manufacturer should be able to build equipment for a particular environment without owning the entire network stack. A network-server provider should be able to manage the network without manufacturing every sensor. An application developer should be able to turn the readings into an alert, a report or an operational decision.
+
+Olivier makes a particularly important point: adoption depends on making partners successful, both technically and financially. Each participant takes some of the co-innovation and adoption risk. If the device maker cannot make a viable product, the installer cannot deploy it, or the operator cannot sustain the service, the ecosystem stalls.
+
+The technology creator does not need to capture every part of the value. It can be more powerful to create the conditions in which many others can create value.
+
+Interview anchor: approximately 14:00–19:00. The acquisition is discussed around 13:40–14:15; the ecosystem and partner-success point follows.
+
+Transition: That ecosystem needed a shared language and room for independent builders. This is where openness matters — but it is worth being precise about what was open.</template>
+    </section>
+
+    <section class="slide slide--light slide--preserve" data-theme="light" data-title="Open enough to build" data-kicker="ACT II · THE ECOSYSTEM · 1:45" aria-hidden="true">
+      <div class="slide-inner preserve-layout">
+        <div class="preserve-heading reveal"><p class="eyebrow">Open enough to build</p><h2>Not everything<br>was open.<br><em>Enough was open<br>to participate.</em></h2><p>An ecosystem can be broader than one company’s product line.</p></div>
+        <ol class="preserve-questions reveal">
+          <li><span>01</span><p><strong>LoRa</strong><br>The radio modulation: proprietary technology.</p></li>
+          <li><span>02</span><p><strong>LoRaWAN</strong><br>An openly published specification, developed through an industry alliance.</p></li>
+          <li><span>03</span><p><strong>Bring your own devices. Choose your gateways. Run your own network. Build your own application.</strong></p></li>
+        </ol>
+      </div>
+      <template class="speaker-notes">We should be precise here. LoRa itself is not open-source radio technology. The modulation is proprietary and associated with Semtech&#x27;s technology. LoRaWAN is an openly published specification developed through the LoRa Alliance, founded in 2015. These are different layers, and “open” is not a single on/off switch.
+
+That combination mattered. A company could make a sensor without asking one operator for permission. A municipality could build a private network. A community could create shared coverage. A manufacturer could create gateways and compete on installation, price, features or support. Developers could use common interfaces rather than being locked into one supplier&#x27;s complete stack.
+
+This is the distinction I want the audience to take away: you do not necessarily have to open every layer to create an ecosystem. What matters is that enough of the interfaces, specifications and rules are accessible for independent companies and communities to participate and interoperate.
+
+Linux is a useful analogy for the importance of a shared foundation and independent contributions. Open-weight AI models are a more recent example of how access to a building block can expand experimentation. They are not identical cases, but they illustrate the broader product lesson: make it possible for other people to build beyond your own roadmap.
+
+Transition: The Things Network took that idea beyond companies and into the city itself.</template>
+    </section>
+
+    <section class="slide slide--light" data-theme="light" data-title="Amsterdam, before the console" data-kicker="ACT II · THE ECOSYSTEM · 2:00" aria-hidden="true">
+      <div class="slide-inner amsterdam-layout">
+        <figure class="city-image reveal"><img src="./assets/amsterdam.jpg" alt="Amsterdam canal and buildings" width="1280" height="720"><figcaption>Amsterdam · The Things Network</figcaption></figure>
+        <div class="city-copy reveal">
+          <p class="eyebrow">Amsterdam · The Things Network</p>
+          <h2>What if a city<br>built it together?</h2>
+          <div class="city-numbers" aria-label="Early The Things Network facts"><div><strong>10</strong><span>gateways</span></div><div><strong>~6</strong><span>weeks</span></div><div><strong>1</strong><span>shared text file</span></div></div>
+          <p>No polished platform. No traditional operator deciding where the experiment could happen.</p>
+          <p>People put gateways on rooftops and made coverage available to one another.</p>
+        </div>
+        <p class="margin-quote">A working radio became shared infrastructure.<br>A community made it useful.</p>
+      </div>
+      <template class="speaker-notes">This is one of the most important stories in the deck. The Things Network did not begin as a finished commercial network. It began with a challenge: what if a city could build coverage together?
+
+The early Amsterdam effort was deliberately rough. Ten gateways, a few weeks and a shared text file. The early network server, Croft, was basic: packets came in, a queue handled them, and public interfaces made messages available to developers. Device addresses were claimed through a shared file. It was not elegant infrastructure. It was enough infrastructure to prove the idea.
+
+There was also a rebellious streak. Why should makers, students, researchers or small businesses have to wait for a large telecom operator to decide that their devices were commercially interesting? The community wanted to build a layer of infrastructure for itself and for others.
+
+There is a little of the early personal-computing spirit here — and perhaps some of the “1984” energy of the early Apple campaign: a smaller group challenging the assumption that only large institutions could decide what gets built. The point is not that telecom operators are villains. It is that another model of participation was possible.
+
+Make the distinction: openness does not remove the need for engineering. The rough prototype proved the possibility; engineering, operations and support were needed to make the network dependable.
+
+Visual note: Keep the Amsterdam photograph and the three memorable numbers. Let the audience read the numbers before explaining Croft. Avoid putting UDP/MQTT/REST mechanics on the slide; keep them in the spoken explanation only if useful.
+
+Transition: TTN was one answer. Other networks grew because people wanted different things from connectivity.</template>
+    </section>
+
+    <section class="slide slide--light" data-theme="light" data-title="Why people build networks" data-kicker="ACT III · THE PEOPLE · 2:00" aria-hidden="true">
+      <div class="slide-inner networks-layout">
+        <div class="networks-heading reveal"><p class="eyebrow">Why people build networks</p><h2>Different networks.<br><em>Different motivations.</em></h2></div>
+        <div class="network-list reveal">
+          <article><span class="network-number">01</span><h3>The Things Network</h3><p>“Let’s build shared infrastructure.”</p><small>Open access · experimentation · contribution</small></article>
+          <article><span class="network-number">02</span><h3>Helium</h3><p>“Let’s reward people for deploying coverage.”</p><small>Incentives · measurable participation · shared infrastructure</small></article>
+          <article><span class="network-number">03</span><h3>Meshtastic</h3><p>“Let’s keep messages moving without the usual infrastructure.”</p><small>Independence · resilience · maker culture</small></article>
+          <article><span class="network-number">04</span><h3>MeshCore</h3><p>“Let’s build a community-operated mesh.”</p><small>Repeaters · local autonomy · mutual reach</small></article>
+        </div>
+        <p class="networks-question">Curiosity. Independence. Resilience. Belonging. The satisfaction of making something useful.</p>
+      </div>
+      <template class="speaker-notes">These projects are not simply different technical architectures. They are answers to different human motivations.
+
+The Things Network made shared coverage and experimentation the point. Helium tried a different approach: it used economic incentives to encourage people to deploy infrastructure and contribute coverage. Meshtastic appeals to people who want local communications that do not depend on cellular service or the internet. MeshCore builds on community-operated repeaters and the idea that ordinary participants can extend reach for one another.
+
+Avoid presenting these as a ranking or as interchangeable solutions. They have different goals, assumptions and operating models. That is precisely why they are interesting together.
+
+Ask the audience: what makes somebody put a gateway or repeater on their roof, spend money on it, give it power and internet access, and then maintain it? Sometimes it is practical need. Sometimes curiosity. Sometimes independence. Sometimes the satisfaction of contributing to something bigger than one device. There can also be a rebellious streak: the desire to build something useful without waiting for permission from a large incumbent.
+
+Helium note: Proof-of-Coverage is a historical example, not a current reward mechanism. It is discussed on the next slide because it illustrates how incentives can make contributions visible and accelerate participation.
+
+Transition: Deploying more radios creates the possibility of coverage. But what makes people notice, join and contribute to a network?</template>
+    </section>
+
+    <section class="slide slide--dark slide--science" data-theme="dark" data-title="Coverage enables growth; people create it" data-kicker="ACT III · THE PEOPLE · 2:30" aria-hidden="true">
+      <div class="slide-inner science-layout">
+        <div class="science-copy reveal">
+          <p class="eyebrow">Coverage enables growth; people create it</p>
+          <h2 class="growth-title">A network grows when people can see a reason to join.</h2>
+          <p class="growth-loop"><strong>DISCOVER</strong> → <strong>JOIN</strong> → <strong>CONTRIBUTE</strong> → <strong>SEE THE VALUE</strong> → <strong>INVITE OTHERS</strong></p>
+          <p class="lede">Radio coverage is invisible. Participation needs to be visible.</p>
+          <dl class="science-principles growth-principles">
+            <div><dt>01</dt><dd>Make the network easy to discover.</dd></div>
+            <div><dt>02</dt><dd>Make joining understandable.</dd></div>
+            <div><dt>03</dt><dd>Show that contributions matter.</dd></div>
+            <div><dt>04</dt><dd>Give people reasons to return and invite others.</dd></div>
+          </dl>
+          <p class="small-note growth-tao">Daodejing · Chapter 81: the value of giving rather than hoarding (paraphrase).</p>
+        </div>
+        <div class="network-visual reveal" aria-label="An animated network showing discovery, participation and contribution">
+          <svg id="network-map" viewBox="0 0 700 700" role="img" aria-labelledby="network-map-title"><title id="network-map-title">A growing network of connected participants</title></svg>
+          <span class="visual-caption growth-caption">Helium’s Proof-of-Coverage made an invisible contribution visible — and rewardable.</span>
+        </div>
+      </div>
+      <template class="speaker-notes">This is where I want to challenge the instinct to think a network grows just because we deploy more gateways. Deployment creates the possibility of connectivity. It does not automatically create adoption, awareness, trust or community.
+
+Radio networks are invisible. A person can travel through an area covered by gateways and never know that the network exists. Growth happens when someone hears about it, understands what it enables, can join without excessive friction, and has a reason to contribute or tell somebody else.
+
+Marketing and community voices matter, but there is also a product-design opportunity. We can build participation into the system: simple onboarding, maps that show where coverage exists, tools that make contributions visible, diagnostics that help maintainers, a way to understand whether a repeater is useful, and incentives that reward useful work. Engineers do not have to become influencers. The product and protocol can help the community explain and extend itself.
+
+Helium&#x27;s historical Proof-of-Coverage is one of the strongest examples I have seen. It tried to make otherwise invisible radio coverage measurable and rewardable. Hotspots could beacon, other hotspots could witness them, and those observations helped establish that a hotspot was contributing to the network. It was more than a marketing campaign asking people to deploy equipment: the network had a mechanism for recognising a contribution.
+
+From my own experience, Proof-of-Coverage produced the fastest network growth I have seen. It gave participants a clear reason to install, improve and talk about their hotspots. One deployment made the next deployment more attractive because local coverage could become visible and verifiable. The incentive helped turn individual enthusiasm into a coordinated expansion of infrastructure.
+
+There is an important second half to the story. Proof-of-Coverage was removed from Helium&#x27;s networks on 6 July 2026. Helium&#x27;s own proposal described PoC as the mechanism that had bootstrapped coverage before demand existed, and shifted the reward model toward real data traffic. This was not an isolated technical adjustment. Helium&#x27;s strategic focus moved decisively toward Mobile and Wi-Fi offload, and Nova Labs accepted the recommendation to find another long-term operator for the IoT network — with decommissioning on the table if no viable operator could be found.
+
+Be precise about the current position: the IoT network has not been switched off. It remains operational. At the 5 November 2026 community call, Nova reported multiple letters of intent from prospective operators and was working toward a term sheet by the end of November; a transfer has not yet been completed. So there may still be a future for the network under different stewardship. But it is no longer central to Helium&#x27;s own strategic direction. My reading is that the organisation is prepared to let the IoT network decline rather than continue treating it as a priority it must grow and fund itself.
+
+That does not erase what Proof-of-Coverage achieved. It shows that two questions are different: How do we bootstrap infrastructure? and Who is committed to operating it for the long term? A powerful incentive can solve the first. It cannot, by itself, guarantee the second.
+
+The Tao connection is Chapter 81 of the Daodejing. In one common rendering, the sage does not hoard; giving to others does not diminish what is available. I am applying that as a metaphor, not as a claim about the original text&#x27;s intended meaning: shared infrastructure can become more valuable because others benefit from it.
+
+Visual note: Keep the animated graph. Let the words describe the human loop, not graph theory. As each stage appears, reveal more of the cluster. This is one of the slides where the animation can do the explanatory work.
+
+Transition: If an incentive can change the scale of a network, it can also become part of the architecture. And architectures sometimes need to change.</template>
+    </section>
+
+    <section class="slide slide--dark slide--sink" data-theme="dark" data-title="Let that sink in" data-kicker="ACT III · THE PEOPLE · 1:15" aria-hidden="true">
+      <div class="sink-image" aria-hidden="true"><img src="./assets/sink.jpg" alt="" width="2048" height="1152"></div>
+      <div class="slide-inner sink-layout">
+        <div class="sink-copy reveal">
+          <h2>LET THAT<br><em>SINK IN.</em></h2>
+          <p><strong>Sometimes progress means retiring something that once worked.</strong></p>
+          <p class="sink-closing">Change can break things. Refusing to change can break the future.</p>
+        </div>
+        <div class="sink-aside reveal">
+          <span>ASK</span><p>Why is it like this?</p>
+          <span>THEN ASK</span><p>What problem did it originally solve?</p>
+          <span>AND THEN ASK</span><p>What becomes possible if we change it?</p>
+        </div>
+      </div>
+      <template class="speaker-notes">Keep the humour of the famous sink photograph. The photograph is the hook; the serious point comes after the laugh.
+
+Innovation is not just adding another feature to an existing design. Sometimes the old architecture, business model or interface has become the obstacle. Apple&#x27;s original iMac is a good example: it dropped the floppy drive at a time when many people still expected computers to include one. That was a deliberate break with familiar behaviour. It simplified one path forward, but it also forced users and software makers to adapt.
+
+The point is not that dramatic removal is automatically right. Removing a feature can strand customers, break workflows or damage trust. The engineering discipline is to understand what the old thing does, who depends on it and what must replace it. Then decide whether preserving it is helping users or merely protecting yesterday&#x27;s assumptions.
+
+The Helium example we have just discussed makes this real. Proof-of-Coverage helped bootstrap a network at extraordinary speed. Later, Helium removed it as part of a strategic shift toward Mobile and Wi-Fi offload, while looking for another operator to take on the IoT network. The network is still operating, but its future no longer sits at the centre of Helium&#x27;s own plans. The lesson is not that the original decision was foolish. A mechanism can be exactly right for one phase and wrong for the next — and a company can decide that a network it helped create is no longer where it wants to invest its attention.
+
+For network ecosystems, migration and compatibility matter. But compatibility cannot become a reason to keep every old decision forever. We should understand what we are changing, what might break, and how to bring people with us.
+
+Visual note: Keep the Musk-with-the-sink image. Put the white text inside a dark translucent overlay panel, away from the bright reflections. Do not put important copy directly over the lightest area of the photograph.
+
+Transition: So what is all this infrastructure for? Not the radio, not the map and not the reward mechanism. What does the connection make possible?</template>
+    </section>
+
+    <section class="slide slide--light slide--work slide--outcomes" data-theme="light" data-title="Connectivity is not the outcome" data-kicker="ACT IV · THE VALUE · 2:15" aria-hidden="true">
+      <div class="slide-inner work-layout">
+        <div class="work-heading reveal"><p class="eyebrow">Connectivity is not the outcome</p><h2>A packet is<br><em>not a benefit.</em></h2></div>
+        <div class="work-list reveal">
+          <article><span class="work-number">01</span><h3>Water leaks</h3><p>Detect water early enough for someone to act before damage spreads.</p></article>
+          <article><span class="work-number">02</span><h3>Water networks</h3><p>Use meter and pressure data to spot anomalies and reduce losses across a distribution system.</p></article>
+          <article><span class="work-number">03</span><h3>Livestock</h3><p>Turn location and behaviour data into better decisions about animals, pasture and time.</p></article>
+        </div>
+        <p class="work-mantra">The question is not “Can it transmit?”<br>It is “What can somebody do now?”</p>
+        <div class="outcome-photos reveal">
+          <figure>
+            <div class="outcome-photo-frame"><img src="./assets/laiier-severn-wld.png" alt="LAIIER Severn WLD sensor strip detecting water beside a phone displaying a leak alert" width="750" height="500" loading="lazy"></div>
+            <figcaption>LAIIER · Severn WLD · Leak detection</figcaption>
+          </figure>
+          <figure>
+            <div class="outcome-photo-frame"><img src="./assets/mido-catanzaro.jpg" alt="MiDo solar-powered LoRaWAN gateway installed on a utility pole in Catanzaro" width="400" height="600" loading="lazy"></div>
+            <figcaption>MiDo · Catanzaro · Solar-powered water monitoring</figcaption>
+          </figure>
+        </div>
+      </div>
+      <template class="speaker-notes">This is the practical heart of IoT. A sensor is not valuable because it sends a packet. It is valuable because the information changes a decision or a process.
+
+For water leaks, use LAIIER&#x27;s Severn WLD example. The device connects to a printed sensor and sends an urgent LoRaWAN message when water is detected across the relevant sensor sections. The value is not the uplink; it is the chance to find a leak early, before a small incident becomes expensive damage. This is a particularly relevant example because we work with LAIIER.
+
+For water utilities, use RAK&#x27;s MiDo deployment in Catanzaro. Water meters and pressure sensors reported through LoRaWAN to a RAK gateway. The gateway had to operate on a pole without mains power, so the installation used a photovoltaic panel and batteries. The value was not merely collecting readings; it was making the water system observable across an area without running a cable to every meter.
+
+For livestock, Halter is a memorable example of the broader product lesson: location, behaviour and virtual-fencing information matter when they change how a farmer manages animals and pasture. RAK makes the Halter hardware. It illustrates the value of turning connected data into an operational product.
+
+The through-line is that connectivity is an enabling layer. The actual product is the improved decision, saved journey, reduced loss, earlier intervention or new service.
+
+Visual note: Use one or two real photographs, not three generic icons. My recommendation: a close-up of the LAIIER leak-sensing strip in place, plus the RAK MiDo gateway/solar installation. A livestock image can replace one if the layout is built around three use cases. Do not use a Halter image in a way that implies a LoRaWAN radio architecture.
+
+Transition: A product only creates this value if it survives contact with real customers and real conditions. That is where support becomes part of innovation.</template>
+    </section>
+
+    <section class="slide slide--light slide--calgary" data-theme="light" data-title="Support is where the next product is found" data-kicker="ACT IV · THE VALUE · 1:30" aria-hidden="true">
+      <div class="slide-inner field-layout">
+        <figure class="field-image reveal"><img src="./assets/calgary-field.jpg" alt="LoRaWAN field deployment equipment in Calgary" width="1080" height="810"><figcaption>City of Calgary deployment · field evidence</figcaption></figure>
+        <div class="field-copy reveal">
+          <p class="eyebrow">Calgary · A deployment is the beginning of the relationship</p>
+          <h2>Installation is<br>not the <em>finish line.</em></h2>
+          <ol class="field-lessons">
+            <li><span>01</span><div><h3>LISTEN</h3><p>What is the customer actually trying to achieve?</p></div></li>
+            <li><span>02</span><div><h3>UNDERSTAND</h3><p>What is happening in the real environment?</p></div></li>
+            <li><span>03</span><div><h3>LEARN</h3><p>What could we improve, simplify or build next?</p></div></li>
+          </ol>
+          <p class="work-mantra">Good support fixes today’s problem.<br>Great support discovers tomorrow’s opportunity.</p>
+        </div>
+      </div>
+      <template class="speaker-notes">Make this slide about people and support, not a list of radio problems. The Calgary deployment gives us a real field setting, but the more important idea is that the relationship does not end at installation.
+
+A customer reports an issue. We can treat it as a ticket to close, or we can listen carefully enough to discover something larger: a recurring installation difficulty, an overlooked workflow, a missing accessory, a documentation gap, or an entirely new use case.
+
+One thing RAK does well is that Ken listens to customers. That sounds simple, but it has real consequences. Listening changes what gets prioritised. It can expose opportunities that the product team would never see from the office. It can create new connections between customers, partners and engineers.
+
+The physical environment still matters: power, weather, mounting, interference, backhaul and maintenance. But those issues matter because a customer depends on the service continuing to work. Support is not separate from innovation. It is one of the ways a product learns what it needs to become.
+
+Visual note: Keep the Calgary field photograph. Use it as evidence that the product lives in the real world, not as a backdrop for abstract RF warnings.
+
+Transition: So what should a good product feel like to the person using it? The Daodejing offers a surprisingly good answer.</template>
+    </section>
+
+    <section class="slide slide--dark slide--payoff" data-theme="dark" data-ambient="ripples" data-title="We did it ourselves" data-kicker="ACT IV · THE VALUE · 1:30" aria-hidden="true">
+      <div class="slide-inner payoff-layout reveal">
+        <p class="eyebrow">A familiar rendering of the idea in the Daodejing, Chapter 17</p>
+        <h2>“We did it<br><em>ourselves.”</em></h2>
+        <div class="payoff-bottom">
+          <p>A good product does not need to be the hero.</p>
+          <strong>It gives somebody else the confidence and the tools to build something of their own.</strong>
+        </div>
+        <p class="work-mantra">The best proof of a product is what other people make with it.</p>
+      </div>
+      <template class="speaker-notes">This is a Taoist idea that fits product design very well. Chapter 17 of the Daodejing describes a form of leadership where the work is complete and the people say, in effect, “we did it ourselves.” English translations differ, so present this as a familiar rendering of the idea rather than the one definitive translation.
+
+Apply that to products. A module should not require the user to become a radio engineer before they can make a useful device. A gateway should not force every customer into one deployment model. A protocol should not prevent different manufacturers from working together. The maker&#x27;s work should become the user&#x27;s capability.
+
+Think back to Pycom and MicroPython, to the RAK811 that gave me an entry point, and to the gateways and development boards people use to build their own solutions. The successful product is not just the unit we sold. It is the thing the customer was able to create because the product existed.
+
+There is a difference between hiding complexity and creating dependency. A good product absorbs unnecessary complexity while leaving users with enough freedom, visibility and control to do their own work.
+
+Transition: We have talked about networks as an idea. Now let&#x27;s meet one.</template>
+    </section>
+
+    <section class="slide slide--dark slide--payoff" data-theme="dark" data-ambient="ripples" data-title="Somewhere beyond this room" data-kicker="ACT IV · THE VALUE · 0:45" aria-hidden="true">
+      <div class="slide-inner payoff-layout reveal">
+        <p class="eyebrow">Somewhere beyond this room</p>
+        <h2>This network<br><em>is not in this room.</em></h2>
+        <div class="payoff-bottom">
+          <p>Across Portugal, people have placed radios and repeaters where they live, work and travel.<br><br>Some use RAK hardware. Others use different devices. Each installation is a small decision to make communication possible for somebody else.</p>
+          <strong>Let’s send a message into that community.</strong>
+        </div>
+      </div>
+      <template class="speaker-notes">Give the demo a little room to breathe. Before touching the interface, explain what the audience is about to experience.
+
+The network is not a server in the presentation laptop. It is a community mesh made from radios and repeaters deployed by people around Portugal. Many participants are experimenting with low-cost hardware; some of the ecosystem is built on RAK devices. These installations create paths that are mostly invisible to the people passing by.
+
+Do not overclaim that there is continuous nationwide coverage. The point is that a growing number of local deployments create paths between communities and places that may otherwise have little infrastructure. The live demonstration will show what is reachable from this particular location at this particular moment.
+
+The message we send will enter a public channel. We do not know who will hear it or who will answer. That uncertainty is part of the demonstration: the network belongs to a community, not to the presenter.
+
+Transition: Let&#x27;s see whether anyone is listening.</template>
+    </section>
+
+    <section class="slide slide--dark slide--demo" data-theme="dark" data-title="Connection, demonstrated" data-kicker="ACT IV · THE VALUE · 3:00" aria-hidden="true">
+      <div class="slide-inner demo-layout">
+        <div class="demo-intro reveal">
+          <p class="eyebrow">One message. Public mesh. Real people.</p>
+          <h2>Is anyone<br><em>out there?</em></h2>
+          <p>Send one message. Then listen.<br>A stranger can answer because other strangers chose to keep the network alive.</p>
+          <p class="public-warning"><span>PUBLIC CHANNEL</span> Anyone on the mesh may read these messages. This is not a private conversation.</p>
+          <div class="demo-controls"><button id="ble-connect" class="action-button" type="button">Connect companion <span>↗</span></button><button id="ble-disconnect" class="text-button demo-disconnect" type="button" hidden>Disconnect</button><p id="ble-status" class="ble-status" role="status">Ready for a WebBluetooth-enabled browser.</p></div>
+          <form id="public-message-form" class="message-form"><label for="public-message">Message to Public</label><textarea id="public-message" rows="3" maxlength="133">Hello from The Tao of LoRaWAN at RAKwireless — is anyone out there?</textarea><div class="message-form-footer"><span id="message-count">0 / 133 bytes</span><button id="ble-send" class="action-button" type="submit" disabled>Send to the mesh <span>→</span></button></div></form>
+          <a class="source-link" href="https://docs.meshcore.io/companion_protocol/" target="_blank" rel="noreferrer">MeshCore companion protocol ↗</a>
+        </div>
+        <div class="demo-conversation reveal">
+          <div class="conversation-header"><div><span class="live-dot" aria-hidden="true"></span><strong>PUBLIC / CHANNEL 0</strong></div><button id="example-toggle" class="text-button" type="button" aria-expanded="true" aria-controls="example-transcript">Hide example</button></div>
+          <div id="live-transcript" class="live-transcript" aria-live="polite" aria-label="Live MeshCore messages"><div id="live-empty" class="live-empty"><span>LIVE REPLIES</span><p>Only actual public-channel messages appear here.</p></div></div>
+          <aside id="example-transcript" class="example-transcript" aria-label="Example transcript, not a live connection"><div class="example-label">EXAMPLE TRANSCRIPT · NOT LIVE</div><blockquote><span>You</span><p>Hello from The Tao of LoRaWAN — is anyone out there?</p></blockquote><blockquote><span>Unknown node</span><p>Yes. Hello from the other side of the mesh.</p></blockquote><p class="fallback-note">Use the example only if the live network is quiet. Keep it clearly labelled as an example.</p></aside>
+        </div>
+      </div>
+      <template class="speaker-notes">1. Connect to the MeshCore companion device using a WebBluetooth-compatible browser.
+2. Confirm the public channel and channel number before sending.
+3. Remind the audience that the message is public. Do not send personal, confidential or sensitive information.
+4. Send the prepared message once. Do not repeatedly broadcast just to force a response.
+5. Give the network time. Let the audience watch for an actual reply.
+6. If a reply arrives, read it as a message from a real participant. Do not imply that the person is part of the presentation or knows the audience.
+7. If no reply arrives, switch to the clearly labelled example transcript. Explain that the example illustrates the interaction; it is not a live message.
+
+The important event is not merely pressing Send. It is that the message has entered infrastructure maintained by people we may never meet. A reply makes that fact emotionally tangible, but no reply does not invalidate the network or prove that the network is absent. It may simply mean nobody is listening at that moment.
+
+Transition: Whether or not somebody answers immediately, look at what had to exist for that message to be possible.</template>
+    </section>
+
+    <section class="slide slide--dark slide--payoff" data-theme="dark" data-ambient="ripples" data-title="Someone made this possible" data-kicker="ACT IV · THE VALUE · 1:15" aria-hidden="true">
+      <div class="slide-inner payoff-layout reveal">
+        <p class="eyebrow">Someone made this possible</p>
+        <h2>That message<br><em>reached beyond us.</em></h2>
+        <div class="payoff-bottom payoff-bottom--decisions">
+          <div><p>Behind one small message:</p><dl class="science-principles human-decisions">
+            <div><dt>01</dt><dd>Someone chose to install a radio.</dd></div>
+            <div><dt>02</dt><dd>Someone found a useful place for a repeater.</dd></div>
+            <div><dt>03</dt><dd>Someone keeps equipment powered and working.</dd></div>
+            <div><dt>04</dt><dd>Someone showed another person how to join.</dd></div>
+          </dl></div>
+          <strong>The network is infrastructure — and a series of human decisions.</strong>
+        </div>
+      </div>
+      <template class="speaker-notes">This is the debrief. Avoid the line about “the message leaving the room”; the more interesting point is what made the message possible.
+
+A community network is not simply a map of coverage. It is a record of decisions: somebody bought a device, found a location, installed an antenna, supplied power, configured it, maintained it and made it available to strangers. Someone else discovered the network and decided to participate.
+
+The live reply, if one arrived, is a visible result of all those invisible decisions. It makes the infrastructure human. If there was no reply, the same point still stands: the network is an invitation, not a guarantee that a person is waiting at the other end at every moment.
+
+This is why the earlier slides matter. LoRa hardware created the possibility. Products made participation accessible. Community projects gave people reasons to build. The network made communication possible between people who may never meet.
+
+Transition: And that brings us to the person who will build the next thing. We do not know who they are yet.</template>
+    </section>
+
+    <section class="slide slide--dark slide--handovers" data-theme="dark" data-title="The next builder is unknown" data-kicker="ACT V · THE NEXT BUILDER · 1:30" aria-hidden="true">
+      <div class="brain-scene" aria-hidden="true"><img class="brain-fallback" src="./assets/vfb-banc-brain.png" alt="" width="1212" height="566"><canvas id="fly-brain-canvas"></canvas></div>
+      <div class="slide-inner handovers-layout">
+        <header class="handovers-heading reveal"><p class="eyebrow">Act V · The next builder</p><h2>The next builder<br><em>is unknown.</em></h2></header>
+        <div class="brain-progression reveal"><p>A radio became a module.<br>Modules became devices.<br>Devices found gateways.<br>Gateways became networks.<br>Networks became platforms for other people’s ideas.</p></div>
+        <div class="handovers-footer reveal"><div class="outlook-label"><a class="brain-credit" href="https://www.virtualflybrain.org/term/VFB_00108w0p/" target="_blank" rel="noopener noreferrer">Brain model · Virtual Fly Brain / BANC · CC BY 4.0</a></div><p><em>What will somebody build with what we make possible today?</em></p></div>
+      </div>
+      <template class="speaker-notes">Use the Three.js rat-brain model as a visual metaphor, not as a neuroscience lecture. The brain is made of specialised regions and connections. The useful visual idea is that capability emerges through interaction; no single component contains the complete behaviour of the whole.
+
+The same is true of an ecosystem. The original LoRa engineers did not design every gateway, every sensor, every network operator or every application that would follow. Semtech did not build every product. RAK does not know every project that will use its hardware. The people who install community repeaters do not know every conversation or use case those repeaters will enable.
+
+The next builder might be a student, a farmer, a municipality, a small company or somebody experimenting at home. They may use a board, module, gateway or protocol in a way its designer never anticipated.
+
+That is not a failure of product planning. It is the point of enabling an ecosystem. Our job is not to predict every future use. It is to make good building blocks, keep the interfaces understandable, support the people who use them and avoid closing off possibilities unnecessarily.
+
+Let the model remain visible while the audience reads the question. Resist the temptation to explain every region of the brain. The metaphor is enough.
+
+Visual note: Keep the brain model as the visual culmination. Use very little text. Avoid suggesting that a radio network and a brain are technically equivalent; the analogy is about specialised contributions creating capabilities through connection.
+
+Transition: Which leaves us with the four principles behind this whole story.</template>
+    </section>
+
+    <section class="slide slide--dark slide--closing" data-theme="dark" data-title="Know what not to break" data-kicker="CLOSING MANTRA · 0:45 + DISCUSSION" aria-hidden="true">
+      <div class="slide-inner closing-layout">
+        <p class="eyebrow reveal">The Tao of LoRaWAN</p>
+        <h2 class="reveal"><span>Question everything.</span><span>Understand the constraints.</span><span>Change what needs changing.</span><span><em>Know what not to break.</em></span></h2>
+        <div class="closing-footer reveal"><span>Discussion</span><span>We build networks to connect things, people and possibilities that were previously out of reach.</span></div>
+      </div>
+      <template class="speaker-notes">Return to the original mantra. Do not add another philosophical explanation. Let the four lines land.
+
+Question everything: the starting assumptions may be wrong. Understand the constraints: physics, power, spectrum, cost, regulation, reliability and the people already depending on the system are real. Change what needs changing: successful products and networks must evolve. Know what not to break: interoperability, trust, the installed base and the ability for other people to participate.
+
+The story of LoRaWAN is not only that a radio travelled farther. It is that an idea became a set of tools, those tools became an ecosystem, and that ecosystem let other people build networks for their own reasons.
+
+End with one question for the room:
+
+What are we enabling somebody else to build?</template>
+    </section>
+  </main>
+
+  <nav class="deck-nav" aria-label="Presentation navigation">
+    <div class="nav-left"><button class="nav-arrow" data-action="previous" aria-label="Previous slide">←</button><span id="slide-count">01 <i>/</i> 18</span><button class="nav-arrow" data-action="next" aria-label="Next slide">→</button></div>
+    <div class="nav-center"><span id="slide-title">The Tao of LoRaWAN</span></div>
+    <div class="nav-right"><span class="key-hint">← → to navigate</span><button class="text-button" data-action="fullscreen" aria-label="Toggle fullscreen">Fullscreen <kbd>F</kbd></button></div>
+  </nav>
+
+  <dialog id="overview-dialog" class="deck-dialog overview-dialog">
+    <div class="dialog-heading"><div><span>THE TAO OF LORAWAN</span><h2>Index</h2></div><button class="dialog-close" data-close="overview-dialog" aria-label="Close overview">×</button></div>
+    <div id="overview-list" class="overview-list"></div>
+    <p class="dialog-hint">Select a thought to jump to it. Press O to close.</p>
+  </dialog>
+
+  <dialog id="notes-dialog" class="deck-dialog notes-dialog">
+    <div class="dialog-heading"><div><span>SPEAKER NOTES</span><h2 id="notes-title">The Tao of LoRaWAN</h2></div><button class="dialog-close" data-close="notes-dialog" aria-label="Close speaker notes">×</button></div>
+    <p id="notes-content"></p>
+    <p class="dialog-hint">Press N to close. Your audience can stay on the slide while you read.</p>
+    <div class="dialog-links"><a class="text-button" href="./notes.html" target="_blank" rel="noopener noreferrer">Open all presenter notes <span aria-hidden="true">↗</span></a></div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./src/main.js?v=19"></script>
+</body>
+</html>
